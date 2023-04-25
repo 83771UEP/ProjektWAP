@@ -1,54 +1,26 @@
-package com.uep.wap.model;
+package com.uep.wap.dto;
 
-
-import javax.persistence.*;
-import java.sql.Blob;
+import javax.persistence.Column;
 import java.sql.Time;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-@Table(name="matches")
-public class Match {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="match_id")
+public class MatchDTO {
+
     private int match_id;
 
-    @Column(name ="start_date")
     private Date start_date;
 
-    @Column(name ="start_time")
     private Time start_time;
 
-    @Column(name ="court_numer")
     private int court_numer;
 
-    @Column(name ="timezone")
     private String timezone;
 
-    @Column(name ="additional_info")
     private String additional_info;
 
-    @Column(name ="points")
     private String points;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "players_matches",
-            joinColumns = @JoinColumn(name = "Match_match_id"),
-            inverseJoinColumns = @JoinColumn(name = "Match_player_id"))
-    private List<Player> players;
-
-    @ManyToOne
-    @JoinColumn(name = "supervisor_id")
-    private Supervisor supervisor;
-
-    @ManyToOne
-    @JoinColumn(name = "bracket_id")
-    private Bracket bracket;
-
-    public Match() {
-    }
+    //methods
 
     public int getMatch_id() {
         return match_id;

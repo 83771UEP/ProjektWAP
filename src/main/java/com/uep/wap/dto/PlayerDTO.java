@@ -1,40 +1,36 @@
-package com.uep.wap.model;
+package com.uep.wap.dto;
 
-import org.hibernate.Session;
+import com.uep.wap.model.Player;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import java.lang.annotation.Annotation;
 
+public class PlayerDTO {
 
-@Entity
-@Table(name="players")
-public class Player{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="player_id")
     private int player_id;
-    @Column(name ="first_name")
+
     private String first_name;
 
-    @Column(name ="middle_name")
     private String middle_name;
 
-    @Column(name ="last_name")
     private String last_name;
-    @Column(name ="age")
+
     private Integer age;
 
-    @Column(name ="nationality")
     private String nationality;
 
-    @Column(name ="height")
     private Integer height;
 
-    @ManyToMany(mappedBy = "players")
-    private List<Match> matches;
+    //methods
 
-    public Player(){
+    public int getPlayer_id() {
+        return player_id;
     }
+
+    public void setPlayer_id(int player_id) {
+        this.player_id = player_id;
+    }
+
     public String getFirst_name() {
         return first_name;
     }
@@ -80,7 +76,3 @@ public class Player{
         this.height = height;
     }
 }
-
-
-
-

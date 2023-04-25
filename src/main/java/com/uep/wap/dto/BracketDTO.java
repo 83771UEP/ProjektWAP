@@ -1,29 +1,25 @@
-package com.uep.wap.model;
+package com.uep.wap.dto;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
 
+public class BracketDTO {
 
-@Entity
-@Table(name="brackets")
-public class Bracket{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="bracket_id")
     private int bracket_id;
-    @Column(name ="tournament_name")
+
     private String tournament_name;
 
-    @Column(name ="tournament_location")
     private String tournament_location;
 
-    @Column(name ="start_date")
     private String start_date;
 
-    @OneToMany(mappedBy = "bracket", cascade = CascadeType.ALL)
-    private List<Match> matches;
+    //methods
 
-    public Bracket(){
+    public int getBracket_id() {
+        return bracket_id;
+    }
+
+    public void setBracket_id(int bracket_id) {
+        this.bracket_id = bracket_id;
     }
 
     public String getTournament_name() {
@@ -49,5 +45,4 @@ public class Bracket{
     public void setStart_date(String start_date) {
         this.start_date = start_date;
     }
-
 }

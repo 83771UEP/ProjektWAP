@@ -1,31 +1,22 @@
-package com.uep.wap.model;
-import javax.persistence.*;
+package com.uep.wap.dto;
 
-@Entity
-@Table(name="users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+import javax.persistence.Column;
+
+public class UserDTO {
     private int user_id;
 
-    @Column(name = "role")
     private String role;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "first_name")
     private String first_name;
 
-    @Column(name = "last_name")
     private String last_name;
 
-    @Column(name = "password")
     private String password; //entered password will be hashed later
 
-    public User(){
-    }
+    //methods
+
     public int getUser_id() {
         return user_id;
     }
