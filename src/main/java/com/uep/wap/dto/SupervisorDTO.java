@@ -23,6 +23,13 @@ public class SupervisorDTO {
         this.supervisor_id = supervisor_id;
     }
 
+    public String getSupervisor_number() {
+        return supervisor_number;
+    }
+
+    public void setSupervisor_number(String supervisor_number) {
+        this.supervisor_number = supervisor_number;
+    }
 
     public String getSupervisor_name() {
         return supervisor_name;
