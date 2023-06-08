@@ -2,11 +2,12 @@ package com.uep.wap.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name="supervisors")
-public class Supervisor {
+public class Supervisor implements Serializable {
 
     @Id
     @GenericGenerator(name="supervisor_id_generator" , strategy="increment")

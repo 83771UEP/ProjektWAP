@@ -2,10 +2,11 @@ package com.uep.wap.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="users")
-public class User {
+public class User implements Serializable {
     @Id
     @GenericGenerator(name="user_id_generator" , strategy="increment")
     @GeneratedValue(generator="user_id_generator")

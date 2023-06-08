@@ -4,16 +4,18 @@ import org.hibernate.Session;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Blob;
 import java.text.DecimalFormat;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Table(name="players")
-public class Player{
+public class Player implements Serializable {
 
     @Id
     @GenericGenerator(name="player_id_generator" , strategy="increment")
@@ -36,19 +38,19 @@ public class Player{
     private Date dateOfBirth;
 
     @Column(name ="height")
-    private DecimalFormat height;
+    private Integer height;
 
     @Column(name ="weight")
-    private DecimalFormat weight;
+    private Integer weight;
 
     @Column(name ="points")
     private Integer points;
 
-    @OneToMany(mappedBy = "player1")
-    private Set<Match> player1Matches;
+    @OneToMany(mappedBy = "player1", fetch = FetchType.LAZY)
+    private List<Match> player1Matches;
 
-    @OneToMany(mappedBy = "player2")
-    private Set<Match> player2Matches;
+    @OneToMany(mappedBy = "player2", fetch = FetchType.LAZY)
+    private List<Match> player2Matches;
 
     public int getPlayer_id() {
         return player_id;
@@ -74,19 +76,19 @@ public class Player{
         this.dateOfBirth = dateOfBirth;
     }
 
-    public DecimalFormat getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(DecimalFormat height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
-    public DecimalFormat getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(DecimalFormat weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
@@ -103,6 +105,7 @@ public class Player{
     public String getFirst_name() {
         return first_name;
     }
+
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
     }

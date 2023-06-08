@@ -33,7 +33,7 @@ public class MatchService {
         return match;
     }*/
 
-    public Match getMatch(Integer match_id) {
+    public Match getMatch(int match_id) {
         return matchRepository.findById(match_id).orElseThrow(() -> new RuntimeException("Match not found"));
     }
 

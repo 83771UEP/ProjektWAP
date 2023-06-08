@@ -30,7 +30,7 @@ public class PlayerService {
         return player;
     }*/
 
-    public Player getPlayer(Integer player_id) {
+    public Player getPlayer(int player_id) {
         return playerRepository.findById(player_id).orElseThrow(() -> new RuntimeException("Player not found"));
     }
 
