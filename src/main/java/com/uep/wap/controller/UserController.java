@@ -1,5 +1,6 @@
 package com.uep.wap.controller;
 
+import com.sun.istack.NotNull;
 import com.uep.wap.dto.PlayerDTO;
 import com.uep.wap.dto.SupervisorDTO;
 import com.uep.wap.dto.UserDTO;
@@ -23,7 +24,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -32,18 +33,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/")
-    public ResponseEntity<User> createSupervisor(@RequestBody UserDTO userDTO) {
-        User user = new User();
-        user.setRole(userDTO.getRole());
-        user.setEmail(userDTO.getEmail());
-        user.setFirst_name(userDTO.getFirst_name());
-        user.setLast_name(userDTO.getLast_name());
-        user.setPassword(userDTO.getPassword());
 
-        User savedUser = userRepository.save(user);
-
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    @PostMapping ("/add")
+    public User addUser(@RequestBody UserDTO userDTO) {
+        return userService.createUser(userDTO).getBody();
     }
 
     @GetMapping("/{user_id}")

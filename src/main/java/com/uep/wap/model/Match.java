@@ -5,12 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Blob;
-import java.sql.Time;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name="matches")
@@ -93,6 +88,15 @@ public class Match implements Serializable {
         return date;
     }
 
+
+    public Bracket getBracket() {
+        return bracket;
+    }
+
+    public void setBracket(Bracket bracket) {
+        this.bracket = bracket;
+    }
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -105,13 +109,6 @@ public class Match implements Serializable {
         this.supervisor = supervisor;
     }
 
-    public Bracket getBracket() {
-        return bracket;
-    }
-
-    public void setBracket(Bracket bracket) {
-        this.bracket = bracket;
-    }
 
     public Match() {
     }

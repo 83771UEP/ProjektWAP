@@ -3,8 +3,10 @@ package com.uep.wap.controller;
 import com.uep.wap.dto.BracketDTO;
 import com.uep.wap.dto.MatchDTO;
 import com.uep.wap.dto.PlayerDTO;
+import com.uep.wap.dto.SupervisorDTO;
 import com.uep.wap.model.Bracket;
 import com.uep.wap.model.Player;
+import com.uep.wap.model.Supervisor;
 import com.uep.wap.repository.BracketRepository;
 import com.uep.wap.repository.PlayerRepository;
 import com.uep.wap.service.BracketService;
@@ -31,16 +33,9 @@ public class BracketController {
     @Autowired
     private BracketRepository bracketRepository;
 
-    @PostMapping("/")
-    public ResponseEntity<Bracket> createBracket(@RequestBody BracketDTO bracketDTO) {
-        Bracket bracket = new Bracket();
-        bracket.setTournament_name(bracketDTO.getTournament_name());
-        bracket.setTournament_location(bracketDTO.getTournament_location());
-        bracket.setStart_date(bracketDTO.getStart_date());
-
-        Bracket savedBracket = bracketRepository.save(bracket);
-
-        return new ResponseEntity<>(savedBracket, HttpStatus.CREATED);
+    @PostMapping ("/add")
+    public Bracket addBracket(@RequestBody BracketDTO bracketDTO) {
+        return bracketService.createBracket(bracketDTO).getBody();
     }
 
     @GetMapping("/{bracket_id}")

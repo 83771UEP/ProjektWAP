@@ -27,19 +27,19 @@ public class PlayerDTO {
         this.points = points;
     }
 
-    public DecimalFormat getWeight() {
+    public Integer getWeight() {
         return weight;
     }
 
-    public void setWeight(DecimalFormat weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
-    public DecimalFormat getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(DecimalFormat height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 
@@ -93,9 +93,9 @@ public class PlayerDTO {
 
     private Date dateOfBirth;
 
-    private DecimalFormat height;
+    private Integer height;
 
-    private DecimalFormat weight;
+    private Integer weight;
 
     private Integer points;
 

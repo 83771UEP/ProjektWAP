@@ -1,13 +1,7 @@
 package com.uep.wap.dto;
 
-import com.uep.wap.model.Bracket;
 import com.uep.wap.model.Player;
-import com.uep.wap.model.Supervisor;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.sql.Time;
 import java.util.Date;
 
 public class MatchDTO {

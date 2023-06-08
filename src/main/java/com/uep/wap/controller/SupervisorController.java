@@ -1,12 +1,8 @@
 package com.uep.wap.controller;
 
-import com.uep.wap.dto.PlayerDTO;
 import com.uep.wap.dto.SupervisorDTO;
-import com.uep.wap.model.Player;
 import com.uep.wap.model.Supervisor;
-import com.uep.wap.repository.MatchRepository;
 import com.uep.wap.repository.SupervisorRepository;
-import com.uep.wap.service.PlayerService;
 import com.uep.wap.service.SupervisorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,5 +43,10 @@ public class SupervisorController {
     @GetMapping("/supervisors")
     public List<Supervisor> getAllSupervisors() {
         return supervisorService.getAllSupervisors();
+    }
+
+    @PostMapping ("/add")
+    public Supervisor addSupervisor(@RequestBody SupervisorDTO supervisorDTO) {
+        return supervisorService.createSupervisor(supervisorDTO).getBody();
     }
 }

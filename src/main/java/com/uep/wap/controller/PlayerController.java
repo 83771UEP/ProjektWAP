@@ -25,7 +25,7 @@ public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
 
-    /*@PostMapping("/add")
+    /*==@PostMapping("/add")
     public ResponseEntity<Player> createPlayer(@RequestBody PlayerDTO playerDTO) {
         Player player = new Player();
         player.setFirst_name(playerDTO.getFirst_name());

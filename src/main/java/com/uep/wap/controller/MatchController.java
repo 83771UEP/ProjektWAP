@@ -1,7 +1,7 @@
 package com.uep.wap.controller;
 
+import com.uep.wap.dto.MatchDTO;
 import com.uep.wap.model.Match;
-import com.uep.wap.model.Player;
 import com.uep.wap.repository.MatchRepository;
 import com.uep.wap.service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,20 +23,10 @@ public class MatchController {
     @Autowired
     private MatchRepository matchRepository;
 
-  /*  @PostMapping("/")
-    public ResponseEntity<Match> createMatch(@RequestBody MatchDTO matchDTO) {
-        Match match = new Match();
-        match.setStart_date(matchDTO.getStart_date());
-        match.setStart_time(matchDTO.getStart_time());
-        match.setCourt_numer(matchDTO.getCourt_numer());
-        match.setTimezone(matchDTO.getTimezone());
-        match.setAdditional_info(matchDTO.getAdditional_info());
-        match.setPoints(matchDTO.getPoints());
-
-        Match savedMatch = matchRepository.save(match);
-
-        return new ResponseEntity<>(savedMatch, HttpStatus.CREATED);
-    }*/
+    @PostMapping ("/add")
+    public Match addMatch(@RequestBody MatchDTO matchDTO) {
+        return matchService.createMatch(matchDTO).getBody();
+    }
 
     @GetMapping("/{match_id}")
     public Match getMatch(@PathVariable Integer match_id) {
