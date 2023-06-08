@@ -3,17 +3,26 @@ package com.uep.wap.service;
 import com.uep.wap.dto.BracketDTO;
 import com.uep.wap.dto.UserDTO;
 import com.uep.wap.model.Bracket;
+import com.uep.wap.model.Player;
 import com.uep.wap.model.User;
 import com.uep.wap.repository.BracketRepository;
+import com.uep.wap.repository.PlayerRepository;
 import com.uep.wap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     public User addUser(UserDTO userDTO) {
         User user = new User();
@@ -25,6 +34,14 @@ public class UserService {
         userRepository.save(user);
         System.out.println("Bracket added!");
         return user;
+    }
+
+    public User getUser(Integer user_id) {
+        return userRepository.findById(user_id).orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
 }

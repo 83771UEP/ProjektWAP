@@ -3,7 +3,7 @@ package com.uep.wap.dto;
 import javax.persistence.Column;
 
 public class UserDTO {
-    private int user_id;
+    private Integer user_id;
 
     private String role;
 
@@ -17,11 +17,11 @@ public class UserDTO {
 
     //methods
 
-    public int getUser_id() {
+    public Integer getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 

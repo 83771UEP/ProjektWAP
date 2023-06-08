@@ -4,24 +4,76 @@ import com.uep.wap.model.Player;
 
 import javax.persistence.Column;
 import java.lang.annotation.Annotation;
+import java.text.DecimalFormat;
+import java.util.Date;
 
 public class PlayerDTO {
 
     private int player_id;
 
-    private String first_name;
+    public String getFirst_name() {
+        return first_name;
+    }
 
-    private String middle_name;
+    public String getNationality() {
+        return nationality;
+    }
 
-    private String last_name;
+    public Integer getPoints() {
+        return points;
+    }
 
-    private Integer age;
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 
-    private String nationality;
+    public DecimalFormat getWeight() {
+        return weight;
+    }
 
-    private Integer height;
+    public void setWeight(DecimalFormat weight) {
+        this.weight = weight;
+    }
 
-    //methods
+    public DecimalFormat getHeight() {
+        return height;
+    }
+
+    public void setHeight(DecimalFormat height) {
+        this.height = height;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public Integer getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(Integer ranking) {
+        this.ranking = ranking;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
 
     public int getPlayer_id() {
         return player_id;
@@ -31,48 +83,20 @@ public class PlayerDTO {
         this.player_id = player_id;
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
+    private String first_name;
 
-    public String getMiddle_name() {
-        return middle_name;
-    }
+    private String last_name;
 
-    public void setMiddle_name(String middle_name) {
-        this.middle_name = middle_name;
-    }
+    private Integer ranking;
 
-    public String getLast_name() {
-        return last_name;
-    }
+    private String nationality;
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
+    private Date dateOfBirth;
 
-    public Integer getAge() {
-        return age;
-    }
+    private DecimalFormat height;
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    private DecimalFormat weight;
 
-    public String getNationality() { return nationality; }
+    private Integer points;
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
 }

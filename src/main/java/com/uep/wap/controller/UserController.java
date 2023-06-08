@@ -3,6 +3,7 @@ package com.uep.wap.controller;
 import com.uep.wap.dto.PlayerDTO;
 import com.uep.wap.dto.SupervisorDTO;
 import com.uep.wap.dto.UserDTO;
+import com.uep.wap.model.Player;
 import com.uep.wap.model.Supervisor;
 import com.uep.wap.model.User;
 import com.uep.wap.repository.MatchRepository;
@@ -12,12 +13,10 @@ import com.uep.wap.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Column;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -25,6 +24,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @Autowired
     private UserRepository userRepository;
@@ -41,5 +44,15 @@ public class UserController {
         User savedUser = userRepository.save(user);
 
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{user_id}")
+    public User getUser(@PathVariable Integer user_id) {
+        return userService.getUser(user_id);
+    }
+
+    @GetMapping("/users")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 }

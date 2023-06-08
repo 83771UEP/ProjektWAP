@@ -1,25 +1,13 @@
 package com.uep.wap.controller;
 
-import com.uep.wap.dto.BracketDTO;
-import com.uep.wap.dto.MatchDTO;
-import com.uep.wap.dto.PlayerDTO;
-import com.uep.wap.model.Bracket;
 import com.uep.wap.model.Match;
-import com.uep.wap.repository.BracketRepository;
+import com.uep.wap.model.Player;
 import com.uep.wap.repository.MatchRepository;
 import com.uep.wap.service.MatchService;
-import com.uep.wap.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
-import java.sql.Time;
-import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/match")
@@ -28,10 +16,14 @@ public class MatchController {
     @Autowired
     private MatchService matchService;
 
+    public MatchController(MatchService matchService) {
+        this.matchService = matchService;
+    }
+
     @Autowired
     private MatchRepository matchRepository;
 
-    @PostMapping("/")
+  /*  @PostMapping("/")
     public ResponseEntity<Match> createMatch(@RequestBody MatchDTO matchDTO) {
         Match match = new Match();
         match.setStart_date(matchDTO.getStart_date());
@@ -44,5 +36,15 @@ public class MatchController {
         Match savedMatch = matchRepository.save(match);
 
         return new ResponseEntity<>(savedMatch, HttpStatus.CREATED);
+    }*/
+
+    @GetMapping("/{match_id}")
+    public Match getMatch(@PathVariable Integer match_id) {
+        return matchService.getMatch(match_id);
+    }
+
+    @GetMapping("/matches")
+    public List<Match> getAllMatches() {
+        return matchService.getAllMatches();
     }
 }

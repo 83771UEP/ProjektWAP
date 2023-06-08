@@ -9,11 +9,17 @@ import com.uep.wap.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BracketService {
 
     @Autowired
     private BracketRepository bracketRepository;
+
+    public BracketService(BracketRepository bracketRepository) {
+        this.bracketRepository = bracketRepository;
+    }
 
     public Bracket addBracket(BracketDTO bracketDTO) {
         Bracket bracket = new Bracket();
@@ -23,6 +29,14 @@ public class BracketService {
         bracketRepository.save(bracket);
         System.out.println("Braclet added!");
         return bracket;
+    }
+
+    public Bracket getBracket(Integer bracket_id) {
+        return bracketRepository.findById(bracket_id).orElseThrow(() -> new RuntimeException("Bracket not found"));
+    }
+
+    public List<Bracket> getAllBrackets() {
+        return bracketRepository.findAll();
     }
 
 }

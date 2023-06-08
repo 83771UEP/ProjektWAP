@@ -18,29 +18,25 @@ public class Match {
     @Column(name ="match_id")
     private int match_id;
 
-    @Column(name ="start_date")
-    private Date start_date;
+    @Column(name ="title")
+    private String title;
 
-    @Column(name ="start_time")
-    private Time start_time;
+    @Column(name ="homeScore")
+    private Integer homeScore;
 
-    @Column(name ="court_numer")
-    private int court_numer;
+    @Column(name ="awayScore")
+    private Integer awayScore;
 
-    @Column(name ="timezone")
-    private String timezone;
+    @Column(name ="date")
+    private Date date;
 
-    @Column(name ="additional_info")
-    private String additional_info;
+    @ManyToOne
+    @JoinColumn(name = "player1_id")
+    private Player player1;
 
-    @Column(name ="points")
-    private String points;
-
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "players_matches",
-            joinColumns = @JoinColumn(name = "Match_match_id"),
-            inverseJoinColumns = @JoinColumn(name = "Match_player_id"))
-    private List<Player> players;
+    @ManyToOne
+    @JoinColumn(name = "player2_id")
+    private Player player2;
 
     @ManyToOne
     @JoinColumn(name = "supervisor_id")
@@ -49,6 +45,54 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "bracket_id")
     private Bracket bracket;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getHomeScore() {
+        return homeScore;
+    }
+
+    public void setHomeScore(Integer homeScore) {
+        this.homeScore = homeScore;
+    }
+
+    public Integer getAwayScore() {
+        return awayScore;
+    }
+
+    public void setAwayScore(Integer awayScore) {
+        this.awayScore = awayScore;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public Bracket getBracket() {
+        return bracket;
+    }
+
+    public void setBracket(Bracket bracket) {
+        this.bracket = bracket;
+    }
 
     public Match() {
     }
@@ -61,51 +105,4 @@ public class Match {
         this.match_id = match_id;
     }
 
-    public Date getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
-    }
-
-    public Time getStart_time() {
-        return start_time;
-    }
-
-    public void setStart_time(Time start_time) {
-        this.start_time = start_time;
-    }
-
-    public int getCourt_numer() {
-        return court_numer;
-    }
-
-    public void setCourt_numer(int court_numer) {
-        this.court_numer = court_numer;
-    }
-
-    public String getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(String timezone) {
-        this.timezone = timezone;
-    }
-
-    public String getAdditional_info() {
-        return additional_info;
-    }
-
-    public void setAdditional_info(String additional_info) {
-        this.additional_info = additional_info;
-    }
-
-    public String getPoints() {
-        return points;
-    }
-
-    public void setPoints(String points) {
-        this.points = points;
-    }
 }

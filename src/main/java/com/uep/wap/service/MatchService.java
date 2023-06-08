@@ -8,13 +8,19 @@ import com.uep.wap.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MatchService {
 
     @Autowired
     private MatchRepository matchRepository;
 
-    public Match addMatch(MatchDTO matchDTO) {
+    public MatchService(MatchRepository matchRepository) {
+        this.matchRepository = matchRepository;
+    }
+
+   /* public Match addMatch(MatchDTO matchDTO) {
         Match match = new Match();
         match.setStart_date(matchDTO.getStart_date());
         match.setStart_time(matchDTO.getStart_time());
@@ -25,6 +31,14 @@ public class MatchService {
         matchRepository.save(match);
         System.out.println("Match added!");
         return match;
+    }*/
+
+    public Match getMatch(Integer match_id) {
+        return matchRepository.findById(match_id).orElseThrow(() -> new RuntimeException("Match not found"));
+    }
+
+    public List<Match> getAllMatches() {
+        return matchRepository.findAll();
     }
 
 }

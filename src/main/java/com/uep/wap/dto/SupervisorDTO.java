@@ -9,7 +9,6 @@ import java.util.List;
 
 public class SupervisorDTO {
     private int supervisor_id;
-    private String supervisor_number;
 
     private String supervisor_name;
 
@@ -21,14 +20,6 @@ public class SupervisorDTO {
 
     public void setSupervisor_id(int supervisor_id) {
         this.supervisor_id = supervisor_id;
-    }
-
-    public String getSupervisor_number() {
-        return supervisor_number;
-    }
-
-    public void setSupervisor_number(String supervisor_number) {
-        this.supervisor_number = supervisor_number;
     }
 
     public String getSupervisor_name() {

@@ -4,7 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -21,17 +25,78 @@ public class Player{
 
     @Column(name ="last_name")
     private String last_name;
-    @Column(name ="age")
-    private Integer age;
+
+    @Column(name ="ranking")
+    private Integer ranking;
 
     @Column(name ="nationality")
     private String nationality;
 
-    @Column(name ="height")
-    private Integer height;
+    @Column(name ="dateOfBirth")
+    private Date dateOfBirth;
 
-    @ManyToMany(mappedBy = "players")
-    private List<Match> matches;
+    @Column(name ="height")
+    private DecimalFormat height;
+
+    @Column(name ="weight")
+    private DecimalFormat weight;
+
+    @Column(name ="points")
+    private Integer points;
+
+    @OneToMany(mappedBy = "player1")
+    private Set<Match> player1Matches;
+
+    @OneToMany(mappedBy = "player2")
+    private Set<Match> player2Matches;
+
+    public int getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(int player_id) {
+        this.player_id = player_id;
+    }
+
+    public Integer getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(Integer ranking) {
+        this.ranking = ranking;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public DecimalFormat getHeight() {
+        return height;
+    }
+
+    public void setHeight(DecimalFormat height) {
+        this.height = height;
+    }
+
+    public DecimalFormat getWeight() {
+        return weight;
+    }
+
+    public void setWeight(DecimalFormat weight) {
+        this.weight = weight;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 
     public Player(){
     }
@@ -50,27 +115,12 @@ public class Player{
         this.last_name = last_name;
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     public String getNationality() { return nationality; }
 
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
 }
 
 
